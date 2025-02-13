@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.library.dao.BookMapper">
+    <select id="getBookList" resultType="org.library.dto.Book">
+        select * from book where bno > 0
+    </select>
+    <select id="read" resultType="org.library.dto.Book">
+
+        select * from book where bno = #{bno}
+    </select>
+    <update id="update">
+        UPDATE book
+        SET availability = 0,
+            borrowerId = #{borrowerId},
+            startDate = NOW(),
+            endDate = DATE_ADD(NOW(), INTERVAL 7 DAY)
+        WHERE bno = #{bno};
+    </update>
+</mapper>

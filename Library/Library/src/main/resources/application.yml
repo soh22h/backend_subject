@@ -1,0 +1,30 @@
+spring:
+  application :
+    name : Library
+  # DB 연결 정보
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/assignmentdb?serverTimezone=UTC&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    username: scott
+    password: tiger
+  messages:
+    basename: i18n/messages/message
+    encoding: UTF-8
+    cache-duration: 30
+    always-use-message-format: true
+    use-code-as-default-message: true
+    fallback-to-system-locale: true
+
+# MyBatis 설정 정보
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mappers/*.xml
+  type-aliases-package: org.library
+
+# Logging 정보
+logging:
+  level:
+    org:
+      springframework:
+        security:
+          web: trace

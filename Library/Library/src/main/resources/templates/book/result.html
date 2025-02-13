@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+</head>
+<style>
+    .detail-item {
+        display: flex;
+        border-bottom: 1px solid #ccc;
+        padding: 0.5rem 0;
+    }
+    .detail-item h4 {
+        flex: 0 0 50%;
+        margin: 0;
+        text-align: center;
+    }
+    .detail-item p {
+        flex: 1;
+        margin: 0;
+        text-align: center;
+    }
+    button {
+        display: block;
+        width: 100%;
+        padding: 0.5rem;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <h2 th:text="#{book.result.title}"></h2>
+    <div class="detail-item">
+        <h4>도서명</h4>
+        <p th:text="${book.title}"></p>
+    </div>
+    <div class="detail-item">
+        <h4>저자</h4>
+        <p th:text="${book.author}"></p>
+    </div>
+    <div class="detail-item">
+        <h4>출판사</h4>
+        <p th:text="${book.publisher}"></p>
+    </div>
+    <div class="detail-item">
+        <h4>신청자</h4>
+        <p th:text="${book.borrowerId}"></p>
+    </div>
+    <div class="detail-item">
+        <h4>대출일</h4>
+        <p th:text="${#temporals.format(book.startDate, 'yyyy-MM-dd')}"></p>
+    </div>
+    <div class="detail-item">
+        <h4>반납일</h4>
+        <p th:text="${#temporals.format(book.endDate, 'yyyy-MM-dd')}"></p>
+    </div>
+    <form th:action="@{/book/list}" method="get">
+        <div style="float: right">
+            <button type="submit">목록 보기</button>
+        </div>
+    </form>
+</body>
+</html>
